@@ -1,0 +1,30 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and credentials
+.env
+.env.*
+credentials*.json
+service-account*.json
+*service_account*.json
+
+# Local data
+data/
+
+# VS Code local settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
