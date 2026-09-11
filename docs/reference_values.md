@@ -89,7 +89,7 @@ event_name:
 
     first_open, session_start, user_engagement, screen_view, select_content, challenge_accepted, challenge_a_friend, post_score   
 
-    app_update, app_remove, app_clear_data, os_update, app_exception, error
+    app_update, app_remove, app_clear_data, os_update, app_exception, error, notification_foreground
 
 event_params.key:
 
@@ -109,7 +109,7 @@ event_params.key:
 
     previous_app_version, previous_os_version, previous_first_open_count, system_app_update, system_app, update_with_analytics
 
-    timestamp, time
+    timestamp, time, engagement_time_msec
 
 event_params.value:
 
@@ -123,11 +123,16 @@ event_params.value:
     
 event_previous_timestamp: 
 
-    982-01-01 08:23:23.376003 UTC - 2018-11-23 22:01:14.874004 UTC
+    1982-01-01 08:23:23.376003 UTC - 2018-11-23 22:01:14.874004 UTC
 
 event_server_timestamp_offset: 
 
-    1969-11-04 02:46:56.330298 UTC - 2018-07-22 19:01:54.506150 UTC
+    -5 001 183.669702 - 1 532 286 114.50615 секунд
+
+    median: 0.494101 секунд
+    p90: 2.34136 секунд
+    p95: 5.505723 секунд
+    p99: 36.202637 секунд
 
 event_timestamp: 
 

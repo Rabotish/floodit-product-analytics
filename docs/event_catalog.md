@@ -38,8 +38,7 @@
 | `level_retry_quickplay` | Повторная попытка в Quickplay режиме |
 | `level_reset_quickplay` | Сброс игры в Quickplay режиме |
 | `level_end_quickplay` | Завершение игры в Quickplay режиме |
-| `completed_5_levels` | Достижение пользователем пятого уровня |
-| `post_score` | Отправка игрового результата |
+| `completed_5_levels` | достижение рубежа в пять успешно завершённых уровней |
 
 ## Monetization events
 
@@ -70,6 +69,7 @@
 | `select_content` | Выбор пользователем контента |
 | `challenge_accepted` | Принятие пользовательского вызова |
 | `challenge_a_friend` | Отправка вызова другу |
+| `post_score` | Отправка игрового результата |
 
 ## System events
 
@@ -81,6 +81,7 @@
 | `os_update` | Обновление операционной системы |
 | `app_exception` | Ошибка приложения |
 | `error` | Ошибка Firebase/приложения |
+| `notification_foreground` | Получение Firebase Cloud Messaging уведомления при активном приложении |
 
 ## Pivot Table ##
 
@@ -103,25 +104,26 @@
 | `in_app_purchase` | Покупка внутри приложения | `product_id`, `product_name`, `price`, `currency`, `quantity`, `value`, `validated`, `firebase_conversion`, `firebase_event_origin` |
 | `spend_virtual_currency` | Использование игровой валюты | `virtual_currency_name`, `value`, `firebase_event_origin` |
 | `ad_reward` | Получение награды за просмотр рекламы | `ad_unit_code`, `ad_event_id`, `type`, `value`, `firebase_screen_class`, `firebase_screen_id`, `firebase_event_origin` |
-| `use_extra_steps` | Использование дополнительных ходов | параметры не определены в исследованных данных |
-| `no_more_extra_steps` | Отсутствие доступных дополнительных ходов | параметры не определены в исследованных данных |
+| `use_extra_steps` | Использование дополнительных ходов | `firebase_event_origin`, `virtual_currency_name`, `item_name`, `value`, `firebase_screen_id`,`firebase_screen_class` |
+| `no_more_extra_steps` | Отсутствие доступных дополнительных ходов | `firebase_screen_class`, `firebase_screen_id`, `value`, `firebase_event_origin` |
 | `firebase_campaign` | Событие Firebase-кампании | `campaign`, `source`, `medium`, `term`, `gclid`, `content` |
 | `dynamic_link_app_open` | Открытие приложения через Firebase Dynamic Link | `dynamic_link_link_id`, `dynamic_link_link_name`, `dynamic_link_accept_time` |
 | `dynamic_link_first_open` | Первое открытие приложения через Firebase Dynamic Link | `dynamic_link_link_id`, `dynamic_link_link_name`, `dynamic_link_accept_time` |
-| `first_open` | Первое открытие приложения пользователем | `firebase_conversion`, `firebase_event_origin`, параметры экрана |
-| `session_start` | Начало пользовательской сессии | `firebase_conversion`, `firebase_event_origin`, параметры экрана |
-| `user_engagement` | Взаимодействие пользователя с приложением | параметры экрана |
-| `screen_view` | Просмотр экрана приложения | параметры экрана |
-| `select_content` | Выбор пользователем контента | `content_type`, `item_id`, `item_name` |
-| `challenge_accepted` | Принятие пользовательского вызова | параметры не определены в исследованных данных |
-| `challenge_a_friend` | Отправка вызова другу | параметры не определены в исследованных данных |
-| `post_score` | Отправка игрового результата | `score` |
-| `app_update` | Обновление приложения | `previous_app_version`, `previous_os_version`, `previous_first_open_count`, `system_app_update`, `system_app`, `update_with_analytics` |
-| `app_remove` | Удаление приложения | параметры не определены в исследованных данных |
-| `app_clear_data` | Очистка данных приложения | параметры не определены в исследованных данных |
-| `os_update` | Обновление операционной системы | параметры не определены в исследованных данных |
-| `app_exception` | Ошибка приложения | `fatal` |
+| `first_open` | Первое открытие приложения пользователем | `firebase_screen_id`, `firebase_screen_class`, `firebase_conversion`, `firebase_event_origin`, `system_app`, `system_app_update`, `firebase_screen`, `update_with_analytics`, `previous_first_open_count` |
+| `session_start` | Начало пользовательской сессии | `firebase_screen_id`, `firebase_screen_class`, `firebase_screen`, `firebase_conversion`, `firebase_event_origin` |
+| `user_engagement` | Событие пользовательской вовлечённости | `firebase_screen_id`, `engagement_time_msec`, `firebase_screen`, `firebase_screen_class`, `firebase_event_origin` |
+| `screen_view` | Просмотр экрана приложения | `firebase_previous_class`, `firebase_previous_screen`, `firebase_screen`, `firebase_event_origin`, `firebase_screen_id`, `firebase_previous_id`, `firebase_screen_class` |
+| `select_content` | Выбор пользователем контента | `firebase_screen_class`, `firebase_event_origin`, `content_type`, `item_id`, `firebase_screen_id` |
+| `challenge_accepted` | Принятие пользовательского вызова | `board`, `firebase_screen_id`, `firebase_screen_class`, `firebase_event_origin` |
+| `challenge_a_friend` | Инициация вызова другу | `firebase_event_origin`, `firebase_screen_class`, `firebase_screen_id`, `board` |
+| `post_score` | Фиксация/отправка игрового результата | `score`, `level`, `time`, `firebase_screen_class`, `firebase_event_origin`, `firebase_screen_id`, `level_name` |
+| `app_update` | Обновление приложения | `firebase_screen_class`, `firebase_event_origin`, `firebase_screen_id`, `previous_app_version` |
+| `app_remove` | Удаление приложения | `firebase_event_origin` |
+| `app_clear_data` | Очистка данных приложения | `firebase_event_origin` |
+| `os_update` | Обновление операционной системы | `previous_os_version`, `firebase_screen_id`, `firebase_event_origin`, `firebase_screen_class` |
+| `app_exception` | Исключение/ошибка приложения | `fatal`, `firebase_screen_class`, `firebase_screen_id`, `firebase_event_origin`, `timestamp` |
 | `error` | Ошибка Firebase/приложения | `firebase_error`, `error_value` |
+| `notification_foreground` | Получение Firebase Cloud Messaging уведомления при активном приложении | `message_name`, `message_id`, `message_time`, `message_device_time`, `firebase_event_origin` |
 
 
 **Ниже представлен более подробный обзор и взаимосвязи, к которым можно обратиться при необходимости**
@@ -134,11 +136,11 @@
 
     level_ (Игровые события) : 
 
-        level_complete - уровень пройден,
+        level_complete - уровень пройден в основном режиме,
         
         level_reset - сбросить текущий результат прохождения уровня без его завершения,
         
-        level_end_quickplay - завершен уровень в режиме quickplay,
+        level_end_quickplay - завершен уровень в режиме quickplay без указания результата,
         
         level_reset_quickplay - сбросить текущий результат прохождения уровня без его завершения в режиме quickplay,
         
@@ -146,13 +148,13 @@
 
         level_start - начат уровень,
         
-        level_end - уровень завершен,
+        level_end - завершение игровой попытки в основном режиме без указания результата,
         
         level_retry_quickplay - повторение попытки пройти уровень в режиме quickplay,
         
         level_start_quickplay - начало прохождения уровня в режиме quickplay,
         
-        level_up - пока хз, полагаю, что начало нового уровня после выигрыша
+        level_up - переход пользователя на следующий уровень после завершения уровня
         
         level_fail - поражение,
         
@@ -160,7 +162,7 @@
 
         level_complete_quickplay - победа в режиме quickplay,
         
-        completed_5_levels - успешно пройдено 5 уровней
+        completed_5_levels - достижение пользователем рубежа в пять успешно пройденных уровней
 
     IAP (Внутриигровая монетизация):
 
@@ -180,7 +182,7 @@
         
         dynamic_link_app_open - открытие приложения через Firebase Dynamic Link,
         
-        dynamic_link_first_open - хз, но наверно первое открытие приложения через Firebase Dynamic Link
+        dynamic_link_first_open - первое открытие приложения через Firebase Dynamic Link
 
     Actions_us (Пользовательская активность):
 
@@ -188,17 +190,17 @@
         
         session_start - начата сессия,
         
-        user_engagement - хз,
+        user_engagement - фиксация времени активного взаимодействия пользователя с приложением,
         
-        screen_view - хз,
+        screen_view - просмотр/переход на экран приложения,
         
         select_content - выбран контент,
         
         challenge_accepted - принят вызов,
         
-        challenge_a_friend - хз, но наверно поступление вызова от друга,
+        challenge_a_friend - инициация игрового вызова другу,
         
-        post_score - поделиться счетом
+        post_score - фиксация/отправка результата прохождения уровня
 
     System (Системные события):
 
@@ -210,9 +212,11 @@
         
         os_update - обновление операционной системы,
         
-        app_exception - выброс исключения приложением,
+        app_exception - исключение приложения,
         
-        error - какая-то пока неустановленная ошибка
+        error - техническое событие ошибки Firebase/приложения
+
+        notification_foreground - автоматически собираемое событие приложения, возникающее в момент, когда уведомление Firebase Cloud Messaging приходит на устройство, и приложение находится на переднем плане.
 
 
 **event_params** - массив параметров конкретного события
@@ -337,7 +341,9 @@
     
         timestamp - временная метка события,
     
-        time - хз, наверно тоже
+        time - служебный параметр с неустановленной семантикой, не используемый в анализе,
+
+        engagement_time_msec - время вовлечённости пользователя в миллисекундах
 
 ## Связка event_param.key и event_param.value ##
 
@@ -495,7 +501,7 @@
     
     Представлено описание значений id текущего экрана
 
-    int_value / float_value, если отсутствует int_value, то id записан через float_value
+    int_value / double_value, если отсутствует int_value, то id записан через double_value
 
 **level.value:** 
 
@@ -535,7 +541,7 @@
 
 **price.value:**
 
-    int_value в диапазоне от 990000 до 120000000 *требует уточнения 
+    int_value в диапазоне от 990000 до 120000000
 
 **currency.value:** 
     
@@ -690,7 +696,7 @@
     
 **time.value:**
 
- int_value / float_value значения представлены 1 и 1.0 (Null-значения присутствуют в обоих атрибутах, но не одновременно)
+ int_value / double_value значения представлены 0 и 0.0 (Null-значения присутствуют в обоих атрибутах, но не одновременно)
 
 ## user_properties ##
 
@@ -748,7 +754,16 @@ user_properties.value: - представляет собой структуру,
 
 **first_open_time.value:**
 
-    int_value и set_timestamp_micros
+    int_value — время первого открытия приложения в Unix microseconds;
+    set_timestamp_micros — время установки/обновления user property.
+
+    Оба поля заполнены во всех наблюдаемых экземплярах 
+
+    временная метка в микросекундах Unix time
+
+    3366394034000 - 1538635716971000
+
+    основная масса значений имеет 16 цифр; присутствует одно аномально раннее значение
 
 **initial_extra_steps.value:**
 
@@ -876,6 +891,9 @@ error_value, firebase_event_origin, firebase_screen_id, firebase_screen, firebas
 os_update:
 previous_os_version, firebase_screen_id, firebase_event_origin, firebase_screen_class
 
+notification_foreground:
+firebase_event_origin, message_device_time, message_id, message_name, message_time
+
 
 **Связь event_name и user_properties.key**
 
@@ -986,3 +1004,6 @@ initial_extra_steps, plays_progressive, _ltv_USD, firebase_exp_3, first_open_tim
 
 os_update:
 _ltv_JPY, _ltv_GBP, plays_progressive, plays_quickplay, _ltv_AUD, firebase_exp_4, _ltv_EUR, num_levels_available, ad_frequency, firebase_last_notification, _ltv_USD, initial_extra_steps, firebase_exp_1, firebase_exp_5, first_open_time, firebase_exp_3
+
+notification_foreground:
+ad_frequency, first_open_time, initial_extra_steps
