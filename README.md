@@ -168,9 +168,11 @@ Spline logistic regression показывает значимое улучшен�
 
 ## Dashboard
 
-![Flood-It Product Analytics Dashboard](dashboard/screenshots/dashboard.png)
+![Flood-It Product Analytics Dashboard First Page](/dashboard/screenshots/product_helth.png)
 
-**Материалы dashboard:** [`dashboard/`](dashboard/)
+[**Открыть dashboard в Looker Studio**](https://datastudio.google.com/reporting/9a66c5fc-54da-495e-bf02-ba19d6be05c0)
+
+**Материалы dashboard:** [`dashboard/`](/dashboard/)
 
 ## Data architecture
 
