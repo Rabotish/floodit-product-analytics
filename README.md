@@ -3,7 +3,6 @@
 ![SQL](https://img.shields.io/badge/SQL-BigQuery-blue)
 ![Python](https://img.shields.io/badge/Python-Analytics-blue)
 ![Airflow](https://img.shields.io/badge/Airflow-Orchestration-blue)
-![BigQuery](https://img.shields.io/badge/BigQuery-GoogleSQL-blue)
 ![Looker Studio](https://img.shields.io/badge/Looker%20Studio-Dashboard-blue)
 
 Проект посвящен исследованию пользовательского поведения в мобильной игре **Flood-It!** на основе event-level данных из Firebase / Google Analytics.
