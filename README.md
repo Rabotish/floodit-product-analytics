@@ -3,6 +3,8 @@
 ![SQL](https://img.shields.io/badge/SQL-BigQuery-blue)
 ![Python](https://img.shields.io/badge/Python-Analytics-blue)
 ![Airflow](https://img.shields.io/badge/Airflow-Orchestration-blue)
+![BigQuery](https://img.shields.io/badge/BigQuery-GoogleSQL-blue)
+![Looker Studio](https://img.shields.io/badge/Looker%20Studio-Dashboard-blue)
 
 Проект посвящен исследованию пользовательского поведения в мобильной игре **Flood-It!** на основе event-level данных из Firebase / Google Analytics.
 
@@ -119,7 +121,7 @@ Spline logistic regression показывает значимое улучшен�
 - likelihood-ratio statistic = **13,64**;
 - p-value = **0,0034**.
 
-Непараметрическое сравнение также показало значимое различие, размер эффекта при этом небольшой, поэтому внедрение изменений на основе этой метрики будет зависеть от оценки рисков и стратегии компании. 
+Непараметрическое сравнение также показало значимое различие, размер эффекта при этом небольшой, поэтому внедрение изменений на основе этой метрики будет зависеть от оценки рисков и стратегии компании.
 
 ### 4. Same-day return связан с существенно более высоким D1 retention
 
@@ -178,39 +180,31 @@ Spline logistic regression показывает значимое улучшен�
 
 ```mermaid
 flowchart TB
-    A[Firebase / GA4] --> B[Raw BigQuery Events]
-    B --> O[Data Profiling & Quality Study]
-    B --> C[Staging]
-    C --> D[Intermediate]
+    A[Firebase / GA4 events_*] --> B[Data Profiling]
+    A --> C[stg_events]
 
-    D --> E[Users]
-    D --> F[Sessions]
-    D --> G[Gameplay Attempts]
-    D --> H[Engagement]
-    D --> I[Monetization]
+    C --> D[users]
+    C --> E[sessions]
+    C --> F[events]
+    F --> G[gameplay_attempts]
 
-    E --> J[Analytical Marts]
-    F --> J
-    G --> J
-    H --> J
-    I --> J
+    D --> H[mart_user_early_journey]
+    E --> H
+    F --> H
+    G --> H
 
-    J --> K[Metrics / Funnel / Retention]
+    H --> Q[Data Quality Checks]
 
-    K --> L[Dashboard]
-    K --> M[Product Analysis]
+    Q --> I[mart_dashboard_overview]
+    Q --> J[mart_dashboard_early_journey]
+    Q --> K[mart_dashboard_retention]
 
-    M --> N[Product Conclusions]
-```
-``` text
-Airflow
-   └── orchestrates
-       Staging → Intermediate → Marts → Dashboard
+    I --> L[Looker Studio]
+    J --> L
+    K --> L
 
-Monitoring
-   └── checks
-       source + pipeline + data quality + product metrics
-
+    I --> M[mart_product_monitoring]
+    M --> N[Product Anomaly Check]
 ```
 ## Technical stack
 

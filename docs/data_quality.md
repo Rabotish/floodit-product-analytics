@@ -172,7 +172,7 @@ UTC-дата `event_timestamp` совпадает с `event_date` для 66,04% 
 
 timezone может объяснять практически всё систематическое расхождение между UTC-временем события и `event_date`, но `event_date` не восстанавливается из `event_timestamp` искусственно.
 
-### `event_previous_timestamp` ПЕРЕПРОВЕРИТЬ
+### `event_previous_timestamp`
 
 | Проверка | Результат | Статус |
 |---|---:|---|

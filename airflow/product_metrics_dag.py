@@ -9,15 +9,17 @@ from airflow.sdk import DAG
 from airflow.providers.standard.operators.bash import BashOperator
 
 
-PROJECT_ID = "sixth-tempo-506411-d9"
+PROJECT_ID = os.getenv(
+    "FLOODIT_PROJECT_ID",
+    "sixth-tempo-506411-d9",
+)
 
 # Корень локального Git-репозитория:
 # ~/projects/floodit-product-analytics
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 # Рабочая директория внутри Google Cloud Shell
-REMOTE_ROOT = "/home/g1234567kazakova/floodit-airflow"
-
+REMOTE_ROOT = os.environ["FLOODIT_REMOTE_ROOT"]
 
 def task_failure_alert(context):
     """Записывает информацию о финальном падении Airflow task."""
