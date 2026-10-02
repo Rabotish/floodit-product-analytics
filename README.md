@@ -36,7 +36,7 @@ D1 / D7 retention
 ```
 ## Metrics
 
-**North Star:** D1 retention.
+**Целевая метрика:** D1 retention.
 
 Дополнительные метрики:
 
